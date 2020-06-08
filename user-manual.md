@@ -1,20 +1,21 @@
-//---------------------------------------//
 
-Welcome to Notes RESTful API
 
-//---------------------------------------//
+# Welcome to Notes RESTful API
 
-API Reference
+
+
+## API Reference
 The API is organized around REST. My API has predictable, resource­-oriented URLs, and uses HTTP response codes to indicate API errors. I support cross­origin resource sharing, allowing you to interact securely with my API from a clientside web application. JSON is returned by all API responses, including errors.
 
 API Root:
+`
 http//localhost:3000
+`
 
-//Till now I've not deployed it.
-//You can use [npm start] in your terminal with the project directory
-//as your active directory. The Mongodb database is open to all IP
-//addresses.
--------------------------------------------------------------------------------------------
+##### Till now I've not deployed it.
+##### You can use [npm start] in your terminal with the project directory as your active directory. 
+##### The Mongodb database is open to all IP addresses.
+
 
 HTTP status code summary:
 Code Explanation
@@ -30,13 +31,55 @@ Code Explanation
 -------------------------------------------------------------------------------------------
 
 Endpoints:
+```
 /notes/
-
+```
 -------------------------------------------------------------------------------------------
 
-Useful methods:
+## Useful requests:
 
-GET_NOTES:
-This method will return an object with following propreties.
-Keys: count, notes
-Values: [returns an integer displaying the number of existing notes], [returns an object which will be]
+Get all notes
+
+Request
+```
+GET /notes/
+```
+
+Response
+```
+{
+    "count": 20,
+    "notes": [
+        {
+            "name": "testlast",
+            "_id": "5ede7bb3dbbaaab2a8cc0498",
+            "content": "some ideal description",
+            "request": {
+                "type": "GET, UPDATE, DELETE",
+                "url": "http://localhost:3000/notes/5ede7bb3dbbaaab2a8cc0498"
+            }
+        },
+        {
+            "name": "latest",
+            "_id": "5ede7bcddbbaaab2a8cc0499",
+            "content": "some even better description",
+            "request": {
+                "type": "GET, UPDATE, DELETE",
+                "url": "http://localhost:3000/notes/5ede7bcddbbaaab2a8cc0499"
+            }
+        },
+        {
+            "name": "Hey There!!",
+            "_id": "5ede7becdbbaaab2a8cc049a",
+            "content": "Today I have to deploy my website over heroku",
+            "request": {
+                "type": "GET, UPDATE, DELETE",
+                "url": "http://localhost:3000/notes/5ede7becdbbaaab2a8cc049a"
+            }
+        },
+        //Several other notes here
+    ]
+}
+```
+
+[]
