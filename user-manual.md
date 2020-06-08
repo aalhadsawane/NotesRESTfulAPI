@@ -84,7 +84,7 @@ The response of the example with `limit` query
 ```
 
 
-#### Response (without any queries, i.e. response to `GET /notes/`)
+#### Response (response to `GET /notes/` (without any query))
 ```
 {
     "count": 20,
@@ -179,7 +179,7 @@ GET /notes/5ede7fd0dbbaaab2a8cc049b
 }
 ```
 
-### 4) Patch a specific note
+### 4) Modify a specific note
 
 #### Request
 ```
