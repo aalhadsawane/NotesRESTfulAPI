@@ -13,11 +13,11 @@ http//localhost:3000
 `
 
 ##### Till now I've not deployed it.
-##### You can use [npm start] in your terminal with the project directory as your active directory. 
+##### You can use [npm start] in your terminal with the project directory as your active directory, to run the server (http//localhost:3000) 
 ##### The Mongodb database is open to all IP addresses.
 
 
-HTTP status code summary:
+## HTTP status code summary:
 Code Explanation
 
     200 ­ OK |Everything worked as expected.
@@ -30,7 +30,7 @@ Code Explanation
 
 -------------------------------------------------------------------------------------------
 
-Endpoints:
+## Endpoints:
 ```
 /notes/
 ```
@@ -38,7 +38,7 @@ Endpoints:
 
 ## Useful requests:
 
-Get all notes
+### Get all notes
 
 Request
 ```
@@ -82,4 +82,60 @@ Response
 }
 ```
 
-[]
+### Post a note
+
+Request
+```
+POST /notes/
+```
+Body (JSON)
+```
+{
+	"name" : "Example Note!!",
+	"content" : "Sample Text - Today I have to deploy my website over heroku."
+}
+```
+
+If `name` is not mentioned in the request body, the `name` will automatically be `Untitled`. In other words, default `name` is `Untitled`.
+
+Similarly, if `content` is not mentioned in the request body, the `content` will automatically be ` ` (""). In other words, default `content` is ` `("").
+
+Response
+```
+{
+    "message": "New note made",
+    "createdNote": {
+        "name": "Example Note!!",
+        "content": "Sample Text - Today I have to deploy my website over heroku.",
+        "_id": "5ede7fd0dbbaaab2a8cc049b",
+        "request": {
+            "type": "GET, UPDATE, DELETE",
+            "url": "http://localhost:3000/notes/5ede7fd0dbbaaab2a8cc049b"
+        }
+    }
+}
+```
+
+### Get a specific note
+
+Request
+```
+GET /notes/{_id}
+```
+Example
+```
+GET /notes/5ede7fd0dbbaaab2a8cc049b
+``` 
+
+Response
+```
+{
+    "name": "Example Note!!",
+    "content": "Sample Text - Today I have to deploy my website over heroku.",
+    "_id": "5ede7fd0dbbaaab2a8cc049b",
+    "request": {
+        "type": "GET, UPDATE, DELETE",
+        "url": "http://localhost:3000/notes/5ede7fd0dbbaaab2a8cc049b"
+    }
+}
+```
