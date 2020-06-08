@@ -14,7 +14,7 @@ http//localhost:3000
 
 ##### Till now I've not deployed it.
 ##### You can use [npm start] in your terminal with the project directory as your active directory, to run the server (http//localhost:3000) 
-##### The Mongodb database is open to all IP addresses.
+##### My Mongodb database is open to all IP addresses.
 
 
 ## HTTP status code summary:
@@ -45,7 +45,46 @@ Code Explanation
 GET /notes/
 ```
 
-#### Response
+##### Queries
+
+`limit` | This query sets a limit to number of notes returned. In simpler words it allows client to set the maximum number of notes which can be returned. It should be an integer.
+
+If the limit is not set, then it becomes 200. In other words, default value of `limit` is 200.
+
+An example of expected `limit` query usage.
+```
+GET /notes/?limit=2
+```
+
+The response of the example with `limit` query
+```
+{
+    "count": 2,
+    "notes": [
+        {
+            "name": "Example with limit",
+            "_id": "5eddffccad537944b06705ea",
+            "content": "Hey there developer!",
+            "request": {
+                "type": "GET, UPDATE, DELETE",
+                "url": "http://localhost:3000/notes/5eddffccad537944b06705ea"
+            }
+        },
+        {
+            "name": "Another example with limit query",
+            "_id": "5eddfff5b1c0a52bb04f00e5",
+            "content": "Oh did we just meet dev? >.<",
+            "request": {
+                "type": "GET, UPDATE, DELETE",
+                "url": "http://localhost:3000/notes/5eddfff5b1c0a52bb04f00e5"
+            }
+        }
+    ]
+}
+```
+
+
+#### Response (without any queries, i.e. response to `GET /notes/`)
 ```
 {
     "count": 20,
@@ -82,7 +121,7 @@ GET /notes/
 }
 ```
 
-### 2) Post a note
+### 2) Add a note
 
 #### Request
 ```
