@@ -4,7 +4,7 @@
 
 
 
-## API Reference
+# API Reference
 The API is organized around REST. My API has predictable, resource­-oriented URLs, and uses HTTP response codes to indicate API errors. I support cross­origin resource sharing, allowing you to interact securely with my API from a clientside web application. JSON is returned by all API responses, including errors.
 
 API Root:
@@ -40,12 +40,12 @@ Code Explanation
 
 ### 1) Get all notes
 
-Request
+#### Request
 ```
 GET /notes/
 ```
 
-Response
+#### Response
 ```
 {
     "count": 20,
@@ -84,11 +84,11 @@ Response
 
 ### 2) Post a note
 
-Request
+#### Request
 ```
 POST /notes/
 ```
-Body (JSON)
+#### Body (JSON)
 ```
 {
 	"name" : "Example Note!!",
@@ -100,7 +100,7 @@ If `name` is not mentioned in the request body, the `name` will automatically be
 
 Similarly, if `content` is not mentioned in the request body, the `content` will automatically be ` ` (""). In other words, default `content` is ` `("").
 
-Response
+#### Response
 ```
 {
     "message": "New note made",
@@ -118,16 +118,16 @@ Response
 
 ### 3) Get a specific note
 
-Request
+#### Request
 ```
 GET /notes/{_id}
 ```
-Example
+An example of an ideal request
 ```
 GET /notes/5ede7fd0dbbaaab2a8cc049b
 ``` 
 
-Response
+#### Response
 ```
 {
     "name": "Example Note!!",
@@ -152,7 +152,7 @@ An example of an ideal request
 PATCH /notes/5ede7fd0dbbaaab2a8cc049b
 ```
 
-Body (JSON)
+#### Body (JSON)
 
 The body is expected to be an array of objects, each of the object(s) must contain two keys: 
 
@@ -174,7 +174,7 @@ An example of expected body (JSON):
 ##### Note: Till date, `propName` can be either `"name"` which specifies the name (or title) of your note or `"content"` which specifies the content or description of your note.
 
 
-### Response
+#### Response
 ```
 {
     "message": "Note Updated",
@@ -191,3 +191,25 @@ An example of expected body (JSON):
 }
 ``` 
 
+### 5) Delete a note
+
+#### Request
+
+```
+DELETE /notes/{_id}
+```
+An example of an ideal request
+```
+DELETE /notes/5ede7fd0dbbaaab2a8cc049b
+``` 
+
+#### Response
+
+```
+{
+    "message": "Note deleted",
+    "deletedNote": {
+        "id": "5ede7fd0dbbaaab2a8cc049b"
+    }
+}
+```
