@@ -38,7 +38,7 @@ Code Explanation
 
 ## Useful requests:
 
-### Get all notes
+### 1) Get all notes
 
 Request
 ```
@@ -82,7 +82,7 @@ Response
 }
 ```
 
-### Post a note
+### 2) Post a note
 
 Request
 ```
@@ -116,7 +116,7 @@ Response
 }
 ```
 
-### Get a specific note
+### 3) Get a specific note
 
 Request
 ```
@@ -139,3 +139,55 @@ Response
     }
 }
 ```
+
+### 4) Patch a specific note
+
+#### Request
+```
+PATCH /notes/{_id}
+```
+An example of an ideal request
+
+```
+PATCH /notes/5ede7fd0dbbaaab2a8cc049b
+```
+
+Body (JSON)
+
+The body is expected to be an array of objects, each of the object(s) must contain two keys: 
+
+First `propName` which specifies the property you wish to edit.
+
+Second `value` which specifies the new value you want to give to the property mentioned in the `propName`.
+
+
+##### It is okay if you only wish to edit just some properties instead of all. Only the properties you mention in your body will be overwritten.
+
+An example of expected body (JSON):
+
+```
+[
+	{"propName" : {the_property_you_want_to_edit}, "value" : the_value_you_want_to_give_to_it},
+	{"propName" : {another_property_you_want_to_edit}, "value" : the_value_you_want_to_give_to_it}
+]
+```
+##### Note: Till date, `propName` can be either `"name"` which specifies the name (or title) of your note or `"content"` which specifies the content or description of your note.
+
+
+### Response
+```
+{
+    "message": "Note Updated",
+    "updatedNote": {
+        "name": "Example Note!!",
+        "content": "Sample Text - Today I have to deploy my website over heroku.",
+        "_id": "5ede7fd0dbbaaab2a8cc049b",
+        "__v": 0
+    },
+    "request": {
+        "type": "GET, UPDATE, DELETE",
+        "url": "http://localhost:3000/notes/5ede7fd0dbbaaab2a8cc049b"
+    }
+}
+``` 
+
